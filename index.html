@@ -1,57 +1,362 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BioTech Agro | Tecnologia que Alimenta o Futuro</title>
+    <style>
+        /* Estilos básicos para visualização imediata */
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --dark: #1b5e20;
+            --text: #333333;
+            --bg-light: #f4f9f4;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo h2 {
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--primary-light);
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-accessible {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .main-title {
+            font-size: 2.8em;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .main-title span {
+            color: var(--primary-light);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .content-section {
+            padding: 60px 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .solution-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .solution-list li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .card-eco {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .hidden-text {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        footer {
+            background-color: #1a251c;
+            color: #a3b8a6;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-socials a {
+            color: var(--primary-light);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            .hero-section, .grid-2 {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+            .main-title {
+                font-size: 2em;
+            }
+        }
+
+        /* Classe de Alto Contraste via JS */
+        .alto-contraste {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+        .alto-contraste header, .alto-contraste footer, .alto-contraste .card-eco, .alto-contraste .bg-light {
+            background: #111111 !important;
+            color: #ffffff !important;
+        }
+        .alto-contraste a, .alto-contraste h1, .alto-contraste h2, .alto-contraste h3, .alto-contraste span {
+            color: #ffff00 !important;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <div>
-            <img src="logomarca.png" alt="logomarca">
+
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <h2>BioTech<span>Agro</span></h2>
+            </div>
+            <nav id="nav-menu" class="nav-links">
+                <a href="#desafio">O Desafio</a>
+                <a href="#solucao">Tecnologia</a>
+                <a href="#futuro">Nova Geração</a>
+            </nav>
+            <div class="accessibility-box">
+                <button id="btn-contrast" class="btn-accessible" aria-label="Inverter cores do site">Contraste 🌗</button>
+            </div>
         </div>
-        <h1>Agrinho 2026</h1>
     </header>
-    <main>
-        <div>
-            <h2>Agricultura de Precisão no Paraná</h2>
-            <p>O Paraná vem ampliando o uso de tecnologias na agronomia, principalmente com agricultura de precisão. Ferramentas como drones, GPS agrícola e sensores ajudam produtores a reduzir desperdícios e aumentar a produtividade. Estudos apontam que o uso dessas tecnologias pode diminuir o gasto com insumos em até 50%, tornando a produção mais eficiente e sustentável.</p>
-        </div>
 
-        <div>
-            <h2>Investimentos e Inovação Tecnológica no Campo</h2>
-            <p>Outro fator importante para o avanço tecnológico da agronomia paranaense é o uso crescente de dados climáticos e inteligência artificial no campo. Plataformas digitais como a Simeagro, desenvolvida pelo Simepar em parceria com o Sistema Ocepar, integram informações meteorológicas, imagens de satélite e indicadores agrícolas para auxiliar cooperativas e produtores rurais no planejamento das safras. Além disso, novas tecnologias de análise automatizada de grãos com inteligência artificial já estão sendo testadas em cooperativas do estado, tornando os processos mais rápidos e precisos. Esse cenário mostra que a tecnologia está transformando a produção agrícola no Paraná, tornando o setor mais eficiente, sustentável e preparado para os desafios futuros.</p>
-        </div>
+    <main id="main-content">
+        
+        <section id="hero" class="container hero-section">
+            <div class="hero-text">
+                <h1 class="main-title">O Campo Avança. A Terra <span>Agradece</span>.</h1>
+                <p class="subtitle">Unindo inteligência artificial e monitoramento de precisão para criar a agricultura mais sustentável da história.</p>
+                <a href="#solucao" class="btn-cta">Descubra a Tecnologia</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&w=600&q=80" alt="Tecnologia no campo" class="img-responsive">
+            </div>
+        </section>
 
-        <div>
-            <h2>Uso de Dados e Inteligência Artificial na Agronomia</h2>
-            <p>Outro fator importante para o avanço tecnológico da agronomia paranaense é o uso crescente de dados climáticos e inteligência artificial no campo. Plataformas digitais como a Simeagro, desenvolvida pelo Simepar em parceria com o Sistema Ocepar, integram informações meteorológicas, imagens de satélite e indicadores agrícolas para auxiliar cooperativas e produtores rurais no planejamento das safras. Além disso, novas tecnologias de análise automatizada de grãos com inteligência artificial já estão sendo testadas em cooperativas do estado, tornando os processos mais rápidos e precisos. Esse cenário mostra que a tecnologia está transformando a produção agrícola no Paraná, tornando o setor mais eficiente, sustentável e preparado para os desafios futuros.</p>
-        </div>
+        <section id="desafio" class="content-section text-center">
+            <div class="container" style="max-width: 800px;">
+                <h2>Alimentar o Mundo sem Esgotar o Planeta</h2>
+                <p style="font-size: 1.1em; color: #555;">Em breve seremos bilhões de pessoas dependendo dos frutos da terra. A resposta para o futuro não está em desmatar novas áreas, mas em usar dados e ciência para tornar cada metro quadrado atual infinitamente mais produtivo.</p>
+            </div>
+        </section>
+
+        <section id="solucao" class="content-section bg-light">
+            <div class="container grid-2">
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=600&q=80" alt="Sensores e plantações" class="img-responsive">
+                </div>
+                <div class="solution-text">
+                    <h2>EcoCrop OS: Inteligência no Solo</h2>
+                    <p>Nossa plataforma integra redes de sensores inteligentes conectados diretamente à nuvem, gerando diagnósticos em tempo real na palma da mão do produtor.</p>
+                    
+                    <ul class="solution-list">
+                        <li><strong>Irrigação Cirúrgica:</strong> Sensores de umidade evitam o desperdício, poupando até 40% dos recursos hídricos.</li>
+                        <li><strong>Visão Computacional:</strong> Detecção precoce de pragas por imagem, diminuindo drasticamente a necessidade de defensivos químicos.</li>
+                        <li><strong>Regeneração de Carbono:</strong> Algoritmos analisam a saúde do solo para otimizar o sequestro de gases estufa de forma natural.</li>
+                    </ul>
+                    
+                    <button id="btn-interagir" class="btn-secondary">Iniciar Simulação Virtual</button>
+                    <p id="mensagem-interativa" class="hidden-text">✨ Conectando simulador... Dispositivos inteligentes integrados reduzem em até 30% os custos operacionais da fazenda!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="futuro" class="content-section">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <h2>A Próxima Fronteira é Sua</h2>
+                <p>O campo moderno não busca apenas tratores, busca engenheiros de software, cientistas de dados, analistas ambientais e mentes inovadoras. A evolução verde é impulsionada por tecnologia.</p>
+                
+                <div class="card-eco">
+                    <h3>💡 Fato Tecnológico</h3>
+                    <p>Drones autônomos equipados com câmeras multiespectrais conseguem identificar o estresse hídrico ou a falta de nutrientes em folhas individuais muito antes do olho humano notar. É a ciência protegendo a comida.</p>
+                </div>
+            </div>
+        </section>
 
     </main>
-    <footer>
-        <div>
-            <h3>Links úteis</h3>
-            <ul>
-                <li><a href="https://www.uol.com.br/"&gt;
-                        <img src="" alt="icone de site">
-                    </a></li>
 
-                <li><a href="https://www.uol.com.br/"&gt;
-                        <img src="" alt="icone de site">
-                    </a></li>
-
-                <li><a href="https://www.uol.com.br/"&gt;
-                        <img src="" alt="icone de site">
-                    </a></li>
-            </ul>
+    <footer id="main-footer">
+        <div class="container">
+            <p>&copy; 2026 BioTech Agro Educacional. Desenvolvido com foco em preservação ambiental e acessibilidade web.</p>
+            <div class="footer-socials">
+                <a href="#">#AgrotechFuturo</a> | 
+                <a href="#">#PlanetaVerde</a>
+            </div>
         </div>
-        <p>Endereço físico do meu site, 777</p>
-        <p>Todos os direitos reservados®</p>
     </footer>
-</body>
 
+    <script>
+        // Funcionalidade do Botão de Simulação
+        const btnInteragir = document.getElementById('btn-interagir');
+        const mensagem = document.getElementById('mensagem-interativa');
+
+        btnInteragir.addEventListener('click', () => {
+            if (mensagem.style.display === 'block') {
+                mensagem.style.display = 'none';
+                btnInteragir.textContent = 'Iniciar Simulação Virtual';
+            } else {
+                mensagem.style.display = 'block';
+                btnInteragir.textContent = 'Fechar Simulação';
+            }
+        });
+
+        // Funcionalidade de Acessibilidade (Alto Contraste)
+        const btnContrast = document.getElementById('btn-contrast');
+        btnContrast.addEventListener('click', () => {
+            document.body.classList.toggle('alto-contraste');
+        });
+    </script>
+</body>
 </html>
